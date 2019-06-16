@@ -1,0 +1,22 @@
+steps:
+
+# build dotnet release
+- name: 'gcr.io/cloud-builders/dotnet'
+  args: ['build', '--configuration', 'Release']
+
+# build image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID', '.']
+  id: 'build'
+
+# push
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID']
+  id: 'push'
+
+# deploy
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy', '--image-url', 'gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID']
+
+# Publish the app.
+images: [ 'gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID' ]
