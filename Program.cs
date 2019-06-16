@@ -23,7 +23,7 @@ namespace dotnet_automated
             string port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
             string url = String.Concat("http://0.0.0.0:", port);
 
-            WebHost.CreateDefaultBuilder(args)
+            return WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>().UseUrls(url);
         }
     }
