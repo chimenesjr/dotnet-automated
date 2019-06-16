@@ -3,24 +3,27 @@ steps:
 # build dotnet release
 - name: 'gcr.io/cloud-builders/dotnet'
   args: ['build', '--configuration', 'Release']
+  id: 'Dotnet Build release'
 
 # build image
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID', '.']
-  id: 'build'
+  id: 'Docker build image'
 
 # push
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID']
-  id: 'push'
+  id: 'Docker push'
 
 # deploy on app engine
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['app', 'deploy', '--image-url', 'gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID']
+  id: 'Deploy to App Engine'
 
 # deploy on cloud run
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['beta', 'run', 'deploy', 'dotnet-automated', '--image', 'gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID', '--region', 'us-central1']
+  id: 'Deploy to Cloud Run'
 
 # Publish the app.
 images: [ 'gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID' ]
