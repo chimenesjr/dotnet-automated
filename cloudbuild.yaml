@@ -20,7 +20,7 @@ steps:
 
 # deploy on cloud run
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['beta', 'run', 'deploy', '$REPO_NAME', '--image', 'gcr.io/$PROJECT_ID/$REPO_NAME', '--region', 'us-central1']
+  args: ['beta', 'run', 'deploy', 'dotnet_automated', '--image', 'gcr.io/$PROJECT_ID/$REPO_NAME', '--region', 'us-central1']
 
 # Publish the app.
 images: [ 'gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID' ]
