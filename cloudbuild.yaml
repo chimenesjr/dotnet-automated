@@ -16,9 +16,9 @@ steps:
   id: 'Docker push'
 
 # deploy on app engine
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy', '--image-url', 'gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID']
-  id: 'Deploy to App Engine'
+# - name: 'gcr.io/cloud-builders/gcloud'
+#   args: ['app', 'deploy', '--image-url', 'gcr.io/$PROJECT_ID/$REPO_NAME:$BUILD_ID']
+#   id: 'Deploy to App Engine'
 
 # deploy on cloud run
 - name: 'gcr.io/cloud-builders/gcloud'
