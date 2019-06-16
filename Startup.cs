@@ -27,7 +27,7 @@ namespace dotnet_automated
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("2: Hello World!");
+                await context.Response.WriteAsync("3: Hello World!");
             });
         }
     }
