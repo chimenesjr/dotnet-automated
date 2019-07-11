@@ -2,7 +2,7 @@
 
 Build and Promotion automation with GCP CLoud Builder
 
-Publishing in a App Engine or Cloud Run service named dotnet-automated
+Publishing into an App Engine or Cloud Run service named dotnet-automated
 
 Simple Hello World application inside a docker container
 
