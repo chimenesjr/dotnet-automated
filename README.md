@@ -1,6 +1,6 @@
 # dotnet-automated
 
-Build and Promotion automation with GCP CLoud Builder
+Build and Deploy automation with GCP CLoud Builder
 
 Publishing into an App Engine or Cloud Run service named dotnet-automated
 
